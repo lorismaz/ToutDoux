@@ -4,7 +4,7 @@ import UIKit
 
 //MARK: Functions
 // Random Pastel Color Generator
-// from:
+// from: https://gist.github.com/JohnCoates/725d6d3c5a07c4756dec
 func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
     // Randomly generate number in closure
     let randomColorGenerator = { ()-> CGFloat in
@@ -36,6 +36,28 @@ enum Status {
 }
 
 //MARK: Classes & Structs
+
+class User {
+    let userId: String
+    var username: String?
+    var lists: [List]?
+    
+    init(username usernameProvided: String?, lists listProvided: [List]?) {
+        userId = NSUUID().uuidString.lowercased()
+        username = usernameProvided
+        lists = listProvided
+    }
+    
+    func getLists() -> [List]? {
+        guard let allUserLists = self.lists else {
+            return nil
+        }
+        
+        return allUserLists
+    }
+    
+}
+
 class List {
     var name: String
     var items: [Item]?
@@ -85,6 +107,15 @@ class List {
 
     }
     
+    func addTo(user currentUser: User) {
+        
+        if currentUser.lists != nil {
+            currentUser.lists?.append(self)
+        } else {
+            currentUser.lists = [self]
+        }
+    }
+    
 }
 
 class Item {
@@ -99,8 +130,8 @@ class Item {
         status = .New
     }
     
-    func completeItem() {
-        self.status = .Complete
+    func setStatus(to newStatus: Status) {
+        self.status = newStatus
     }
     
     func isComplete() -> Bool {
@@ -133,12 +164,19 @@ class Item {
 }
 
 //MARK: Tests
+
+let currentUser = User(username: nil, lists: nil)
+
+currentUser.userId
+currentUser.getLists()
+
 let list1 = List(name: "Home", items: nil)
 
-list1.color
+print(list1.color)
 
+list1.addTo(user: currentUser)
 
-
+list1.getItems()
 
 let item1 = Item(title: "Don't forget to eat", description: nil)
 let item2 = Item(title: "Do that!", description: "Do that or you will be late")
@@ -155,14 +193,14 @@ item1.addTo(list: list1)
 item2.addTo(list: list1)
 
 item1.isComplete()
-item1.completeItem()
+item1.setStatus(to: .Complete)
 item1.isComplete()
 
 
 list1.getItemsFilteredBy(status: .New)
 
 list1.getItems()
-
+//or
 list1.items
 
 
