@@ -78,6 +78,10 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="ezD-QF-7ay"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="D1S-RI-l7R"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemDescriptionTextField" destination="Wig-TF-6JY" id="clw-Q1-xVk"/>
+                        <outlet property="itemNameTextField" destination="bTs-qJ-tPZ" id="u6h-Xk-OgX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WgY-fT-7h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,31 +96,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NEj-h8-mow">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListTableViewCell" id="NEj-h8-mow" customClass="ListTableViewCell" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NEj-h8-mow" id="sJR-Hq-w53">
-                                    <frame key="frameInset" width="375" height="127.5"/>
+                                    <frame key="frameInset" width="375" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taZ-nB-ATl">
-                                            <frame key="frameInset" minX="321" minY="48" width="46" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CwO-3Z-WZS">
+                                            <frame key="frameInset" minX="28" minY="35" width="314" height="56"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                            <state key="normal" title="&gt;"/>
-                                            <connections>
-                                                <segue destination="6vQ-3R-17l" kind="show" id="HpP-KI-P7e"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwO-3Z-WZS">
-                                            <frame key="frameInset" minX="36" minY="35" width="219" height="56"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="52"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="listNameLabel" destination="CwO-3Z-WZS" id="aZb-UU-BwS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -191,6 +189,9 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="0Wz-Ks-hLY"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="TOt-Ve-7dM"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="listNameTextField" destination="BY4-s9-dWS" id="1Ox-ti-zkh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hl5-jz-5O7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,7 +200,7 @@
         <!--List Name-->
         <scene sceneID="LH6-Nv-9o9">
             <objects>
-                <tableViewController id="6vQ-3R-17l" sceneMemberID="viewController">
+                <tableViewController id="6vQ-3R-17l" customClass="ItemTableViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xL8-gR-J3h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,12 +215,25 @@
                             </segments>
                         </segmentedControl>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gDr-nN-ctL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTableViewCell" id="gDr-nN-ctL">
                                 <rect key="frame" x="0.0" y="122" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDr-nN-ctL" id="VIS-uO-9Pd">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="not-checked" translatesAutoresizingMaskIntoConstraints="NO" id="j7k-HB-e4l">
+                                            <frame key="frameInset" minX="8" minY="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol6-wR-kYv">
+                                            <frame key="frameInset" minX="46" minY="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -259,7 +273,7 @@
             <point key="canvasLocation" x="957.60000000000002" y="136.28185907046478"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wPm-ZM-OeB"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="not-checked" width="31" height="31"/>
+    </resources>
 </document>
