@@ -123,7 +123,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do Lists" id="RX4-EP-DzG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="kgB-Tj-r12"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="qQ5-uJ-1NR">
                                 <connections>
