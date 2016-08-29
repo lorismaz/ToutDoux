@@ -9,15 +9,33 @@
 import UIKit
 
 class ListTableViewController: UITableViewController {
-
+    
+    var lists = [ToDoList]()
+    
+    // MARK: Properties
+    
+    // MARK: Actions
+    
+    // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        loadSampleLists()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func loadSampleLists() {
+        let list1 = ToDoList(name: "Home", items: nil)
+        
+        let list2 = ToDoList(name: "GA", items: nil)
+        
+        let list3 = ToDoList(name: "Groceries", items: nil)
+        
+        lists += [list1, list2, list3]
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +47,25 @@ class ListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return lists.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
+        
+        let list = lists[(indexPath as NSIndexPath).row]
+        
+        cell.listNameLabel.text = list.name
+        cell.backgroundColor = list.color
+        cell.listNameLabel.textColor = UIColor.white
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -93,3 +113,5 @@ class ListTableViewController: UITableViewController {
     */
 
 }
+
+
