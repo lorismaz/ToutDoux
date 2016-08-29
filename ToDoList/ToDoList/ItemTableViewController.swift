@@ -9,15 +9,39 @@
 import UIKit
 
 class ItemTableViewController: UITableViewController {
-
+    
+    var items = [Item]()
+    
+    // MARK : Properties
+    // MARK : Actions
+    @IBAction func itemStatusSegment(_ sender: UISegmentedControl) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let listName = "Groceries"
+        self.title = "\(listName) List"
+        
+        loadSampleItems()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func loadSampleItems() {
+        let item1 = Item(title: "Prepare food for the week", description: nil)
+        item1.setStatus(to: .Complete)
+        
+        let item2 = Item(title: "Finish the project", description: nil)
+        
+        let item3 = Item(title: "Find a job", description: nil)
+        
+        let item4 = Item(title: "Go fishing 🎣", description: nil)
+        
+        items += [item1, item2, item3, item4]
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,26 +50,37 @@ class ItemTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return items.count
     }
 
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
+        
+        let item = items[(indexPath as NSIndexPath).row]
+        
+        cell.itemNameLabel.text = item.title
+        
+        if item.isComplete() {
+            cell.itemCheckboxImage.image = UIImage(named: "checked")
+            cell.itemNameLabel.textColor = UIColor.gray
+        } else {
+            cell.itemCheckboxImage.image = UIImage(named: "not-checked")
+        }
+        
+        
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
