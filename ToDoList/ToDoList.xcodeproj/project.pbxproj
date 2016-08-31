@@ -11,9 +11,12 @@
 		AB24E4E41D73983100131587 /* AddListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E31D73983100131587 /* AddListTableViewController.swift */; };
 		AB24E4E61D73985100131587 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E51D73985100131587 /* AddItemTableViewController.swift */; };
 		AB24E4E81D73986C00131587 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E71D73986C00131587 /* ItemTableViewController.swift */; };
-		AB24E4EA1D73A6AF00131587 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E91D73A6AF00131587 /* ToDo.swift */; };
+		AB24E4EA1D73A6AF00131587 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E91D73A6AF00131587 /* List.swift */; };
 		AB24E4F01D73B1E500131587 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4EF1D73B1E500131587 /* ListTableViewCell.swift */; };
 		AB24E4F41D73B7C200131587 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4F31D73B7C200131587 /* ItemTableViewCell.swift */; };
+		AB7255A21D762B2800F11885 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7255A11D762B2800F11885 /* User.swift */; };
+		AB7255A61D762D1200F11885 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7255A51D762D1200F11885 /* Common.swift */; };
+		AB7255A81D762D7900F11885 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7255A71D762D7900F11885 /* Item.swift */; };
 		ABD0C6AD1D6C116100790A4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD0C6AC1D6C116100790A4A /* AppDelegate.swift */; };
 		ABD0C6B21D6C116100790A4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD0C6B01D6C116100790A4A /* Main.storyboard */; };
 		ABD0C6B41D6C116100790A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD0C6B31D6C116100790A4A /* Assets.xcassets */; };
@@ -36,9 +39,12 @@
 		AB24E4E31D73983100131587 /* AddListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListTableViewController.swift; sourceTree = "<group>"; };
 		AB24E4E51D73985100131587 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
 		AB24E4E71D73986C00131587 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
-		AB24E4E91D73A6AF00131587 /* ToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		AB24E4E91D73A6AF00131587 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		AB24E4EF1D73B1E500131587 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		AB24E4F31D73B7C200131587 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		AB7255A11D762B2800F11885 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB7255A51D762D1200F11885 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		AB7255A71D762D7900F11885 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		ABD0C6A91D6C116100790A4A /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD0C6AC1D6C116100790A4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD0C6B11D6C116100790A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,7 +122,10 @@
 				ABD0C6B31D6C116100790A4A /* Assets.xcassets */,
 				ABD0C6B51D6C116100790A4A /* LaunchScreen.storyboard */,
 				ABD0C6B81D6C116100790A4A /* Info.plist */,
-				AB24E4E91D73A6AF00131587 /* ToDo.swift */,
+				AB7255A51D762D1200F11885 /* Common.swift */,
+				AB24E4E91D73A6AF00131587 /* List.swift */,
+				AB7255A71D762D7900F11885 /* Item.swift */,
+				AB7255A11D762B2800F11885 /* User.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -240,9 +249,12 @@
 				AB24E4E61D73985100131587 /* AddItemTableViewController.swift in Sources */,
 				AB24E4E21D7397E900131587 /* ListTableViewController.swift in Sources */,
 				AB24E4F41D73B7C200131587 /* ItemTableViewCell.swift in Sources */,
+				AB7255A21D762B2800F11885 /* User.swift in Sources */,
+				AB7255A81D762D7900F11885 /* Item.swift in Sources */,
 				ABD0C6AD1D6C116100790A4A /* AppDelegate.swift in Sources */,
 				AB24E4E41D73983100131587 /* AddListTableViewController.swift in Sources */,
-				AB24E4EA1D73A6AF00131587 /* ToDo.swift in Sources */,
+				AB7255A61D762D1200F11885 /* Common.swift in Sources */,
+				AB24E4EA1D73A6AF00131587 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

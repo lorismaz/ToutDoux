@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,11 +95,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListTableViewCell" id="NEj-h8-mow" customClass="ListTableViewCell" customModule="ToDoList" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListTableViewCell" id="NEj-h8-mow" customClass="ListTableViewCell" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NEj-h8-mow" id="sJR-Hq-w53">
-                                    <frame key="frameInset" width="375" height="128"/>
+                                    <frame key="frameInset" width="342" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CwO-3Z-WZS">
@@ -123,19 +122,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do Lists" id="RX4-EP-DzG">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="qQ5-uJ-1NR">
-                                <connections>
-                                    <segue destination="4iD-jA-RgN" kind="show" id="E3W-j0-Ux8"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="dev" id="qYv-Yi-8xd">
-                                <connections>
-                                    <segue destination="6vQ-3R-17l" kind="show" id="wPm-ZM-OeB"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qQ5-uJ-1NR">
+                            <connections>
+                                <segue destination="4iD-jA-RgN" kind="show" id="E3W-j0-Ux8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="6vQ-3R-17l" kind="show" identifier="ToListItems" id="jX1-gs-V8G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBN-k5-bUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,7 +10,18 @@ import UIKit
 
 class ItemTableViewController: UITableViewController {
     
-    var items = [Item]()
+    // get all list's items, if any
+    //var currentList = lists[row]
+    //var items: [Item]? = currentList.items
+    
+    var listData: List!
+    
+//    var items: [Item] = [
+//    Item(title: "Prepare food for the week", description: nil),
+//    Item(title: "Finish the project", description: nil),
+//    Item(title: "Find a job", description: nil),
+//    Item(title: "Go fishing 🎣", description: nil)
+//    ]
     
     // MARK : Properties
     // MARK : Actions
@@ -20,28 +31,16 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let listName = "Groceries"
+        let items = listData.items
+        
+        let listName = listData.name
         self.title = "\(listName) List"
         
-        loadSampleItems()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    func loadSampleItems() {
-        let item1 = Item(title: "Prepare food for the week", description: nil)
-        item1.setStatus(to: .Complete)
-        
-        let item2 = Item(title: "Finish the project", description: nil)
-        
-        let item3 = Item(title: "Find a job", description: nil)
-        
-        let item4 = Item(title: "Go fishing 🎣", description: nil)
-        
-        items += [item1, item2, item3, item4]
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,12 +58,20 @@ class ItemTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return items.count
+        if let items = listData.items {
+            return items.count
+        } else {
+            return 0
+        }
+        
+        
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
+        
+        guard let items = listData.items else { return UITableViewCell() }
         
         let item = items[(indexPath as NSIndexPath).row]
         
@@ -94,6 +101,7 @@ class ItemTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            print("❌ delete")
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -101,6 +109,7 @@ class ItemTableViewController: UITableViewController {
         }    
     }
     */
+ 
 
     /*
     // Override to support rearranging the table view.
