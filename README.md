@@ -13,9 +13,10 @@ You can create and edit to-do lists, and add to-do items to these lists. Swipe t
 ![proto 1](assets/prototypes/LoFi/paper1.png)
 
 ### Sketch
-|![proto 1](assets/prototypes/HiFi/proto1.png)   	| ![proto 2](assets/prototypes/HiFi/proto2.png)  |
-|:-:									|:-:|
-| ![proto 3](assets/prototypes/HiFi/proto3.png)  	| ![proto 4](assets/prototypes/HiFi/proto4.png)  |
+![proto 1](assets/prototypes/HiFi/proto1.png)
+![proto 2](assets/prototypes/HiFi/proto2.png)
+![proto 3](assets/prototypes/HiFi/proto3.png)
+![proto 4](assets/prototypes/HiFi/proto4.png)
 
 ## Screenshots
 
