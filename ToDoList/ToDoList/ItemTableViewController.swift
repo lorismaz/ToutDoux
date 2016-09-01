@@ -12,6 +12,7 @@ class ItemTableViewController: UITableViewController {
     
     var listData: List!
     var items: [Item]!
+    var selectedSegment: Int!
     
     // MARK: Properties
     // segment switch outlet
@@ -65,6 +66,8 @@ class ItemTableViewController: UITableViewController {
             }
         }
 
+        // var selectedItems = getSelectedItems()
+        // return selectedItems
         
         switch(statusSegmentControl.selectedSegmentIndex)
         {
@@ -80,8 +83,6 @@ class ItemTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-    
-        //guard let allItems = listData.items else { return UITableViewCell() }
 
         let items = listData.items
         
@@ -131,18 +132,13 @@ class ItemTableViewController: UITableViewController {
             tableView.reloadData()
         }
         
-        //cell.delegate = self
-        
         //load item
         let item = selectedItems[(indexPath as NSIndexPath).row]
         
         cell.itemNameLabel.text = item.title
         
-        // Need to learn more about this command
-        cell.checkBoxButton.tag = indexPath.row
-        
-        
         if item.isCompleted {
+            // Introducing the statusji™
             cell.statusLabel.text = item.statusji
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
@@ -151,12 +147,6 @@ class ItemTableViewController: UITableViewController {
         }
         
         return cell
-    }
-    
-    func switchStatus(sender:UIButton) {
-        
-        self.tableView.reloadData()
-    
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -226,7 +216,7 @@ class ItemTableViewController: UITableViewController {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
-                // Update an existing meal.
+                // Update an existing item.
                 listData.items[selectedIndexPath.row] = item
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 

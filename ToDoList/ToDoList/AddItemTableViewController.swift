@@ -14,7 +14,8 @@ class AddItemTableViewController: UITableViewController {
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+
+    // MARK: Actions
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
         //if from modal, dismiss the page
         if(presentingViewController != nil){
@@ -52,7 +53,37 @@ class AddItemTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if saveButton === sender as? UIBarButtonItem {
+            
+            guard let name = itemNameTextField.text else { return true }
+            
+            if (name.isEmpty) {
+                displayError()
+                return false
+                
+            } else {
+                return true
+                
+            }
+            
+        }
+        
+        return true
+    }
+    
+    func displayError(){
+        
+        let alertController = UIAlertController(title: "Empty Item Name", message:
+            "Please enter a to-do before saving", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if saveButton === sender as? UIBarButtonItem {
