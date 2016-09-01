@@ -45,7 +45,7 @@
 		AB7255A11D762B2800F11885 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB7255A51D762D1200F11885 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		AB7255A71D762D7900F11885 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		ABD0C6A91D6C116100790A4A /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD0C6A91D6C116100790A4A /* Tout Doux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tout Doux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD0C6AC1D6C116100790A4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD0C6B11D6C116100790A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABD0C6B31D6C116100790A4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		ABD0C6AA1D6C116100790A4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ABD0C6A91D6C116100790A4A /* ToDoList.app */,
+				ABD0C6A91D6C116100790A4A /* Tout Doux.app */,
 				ABD0C6BD1D6C116100790A4A /* ToDoListUITests.xctest */,
 			);
 			name = Products;
@@ -150,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ABD0C6A81D6C116100790A4A /* ToDoList */ = {
+		ABD0C6A81D6C116100790A4A /* Tout Doux */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ABD0C6C61D6C116100790A4A /* Build configuration list for PBXNativeTarget "ToDoList" */;
+			buildConfigurationList = ABD0C6C61D6C116100790A4A /* Build configuration list for PBXNativeTarget "Tout Doux" */;
 			buildPhases = (
 				ABD0C6A51D6C116100790A4A /* Sources */,
 				ABD0C6A61D6C116100790A4A /* Frameworks */,
@@ -162,9 +162,9 @@
 			);
 			dependencies = (
 			);
-			name = ToDoList;
+			name = "Tout Doux";
 			productName = ToDoList;
-			productReference = ABD0C6A91D6C116100790A4A /* ToDoList.app */;
+			productReference = ABD0C6A91D6C116100790A4A /* Tout Doux.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ABD0C6BC1D6C116100790A4A /* ToDoListUITests */ = {
@@ -221,7 +221,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ABD0C6A81D6C116100790A4A /* ToDoList */,
+				ABD0C6A81D6C116100790A4A /* Tout Doux */,
 				ABD0C6BC1D6C116100790A4A /* ToDoListUITests */,
 			);
 		};
@@ -279,7 +279,7 @@
 /* Begin PBXTargetDependency section */
 		ABD0C6BF1D6C116100790A4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ABD0C6A81D6C116100790A4A /* ToDoList */;
+			target = ABD0C6A81D6C116100790A4A /* Tout Doux */;
 			targetProxy = ABD0C6BE1D6C116100790A4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -403,6 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H69J6FK3WQ;
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mazlabs.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,6 +417,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H69J6FK3WQ;
 				INFOPLIST_FILE = ToDoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mazlabs.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ABD0C6C61D6C116100790A4A /* Build configuration list for PBXNativeTarget "ToDoList" */ = {
+		ABD0C6C61D6C116100790A4A /* Build configuration list for PBXNativeTarget "Tout Doux" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ABD0C6C71D6C116100790A4A /* Debug */,
