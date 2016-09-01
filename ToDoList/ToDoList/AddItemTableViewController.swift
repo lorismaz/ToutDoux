@@ -16,7 +16,16 @@ class AddItemTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        //if from modal, dismiss the page
+        if(presentingViewController != nil){
+            dismiss(animated: true, completion: nil)
+        }
+        
+        //if from push, pop the view
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true);
+        }
+    
     }
     
     var item: Item!
