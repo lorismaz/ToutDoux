@@ -11,35 +11,12 @@ import UIKit
 class Item {
     var title: String
     var description: String?
-    var status: Status
+    var isCompleted: Bool = false
     //let itemPriority: Priority
     
     init(title providedTitle: String, description providedDescription: String?) {
         title = providedTitle
         description = providedDescription
-        status = .new
     }
     
-    func setStatus(to newStatus: Status) {
-        self.status = newStatus
-    }
-    
-    func isComplete() -> Bool {
-        
-        switch status {
-        case .complete:
-            return true
-        default:
-            return false
-        }
-        
-    }
-    
-    func updateDescription(with content: String) {
-        self.description = content
-    }
-    
-    func updateTitle(with content: String) {
-        self.title = content
-    }
 }

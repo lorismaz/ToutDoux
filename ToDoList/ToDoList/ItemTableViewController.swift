@@ -11,6 +11,7 @@ import UIKit
 class ItemTableViewController: UITableViewController {
     
     var listData: List!
+    var items: [Item]!
     
     // MARK: Properties
     // segment switch outlet
@@ -27,6 +28,8 @@ class ItemTableViewController: UITableViewController {
         
         let listName = listData.name
         self.title = "\(listName) List"
+        
+        
 
     }
 
@@ -45,16 +48,27 @@ class ItemTableViewController: UITableViewController {
     // Number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        guard let allItems = listData.items else { return 0 }
+        
+//        var selectedItems: [Item]
+        var completedItems: [Item] = []
+        var newItems: [Item] = []
+        
+        for item in allItems {
+            if item.isCompleted {
+                completedItems.append(item)
+            } else {
+                newItems.append(item)
+            }
+        }
+        
         switch(statusSegmentControl.selectedSegmentIndex)
         {
         case 0:
-            guard let newItems = listData.getItemsFilteredBy(status: .new) else { return 0 }
             return newItems.count
         case 2:
-            guard let completeItems = listData.getItemsFilteredBy(status: .complete) else { return 0 }
-            return completeItems.count
+            return completedItems.count
         default:
-            guard let allItems = listData.items else { return 0 }
             return allItems.count
         }
         
@@ -63,21 +77,47 @@ class ItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
         
+        
+        
+        guard let allItems = listData.items else { return UITableViewCell() }
+
         var selectedItems: [Item]
+        var completedItems: [Item] = []
+        var newItems: [Item] = []
+        
+        for item in allItems {
+            if item.isCompleted {
+                completedItems.append(item)
+            } else {
+                newItems.append(item)
+            }
+        }
         
         // check which segment is selected
         switch(statusSegmentControl.selectedSegmentIndex)
         {
         case 0:
-            guard let newItems = listData.getItemsFilteredBy(status: .new) else { return UITableViewCell() }
             selectedItems = newItems
         case 2:
-            guard let completeItems = listData.getItemsFilteredBy(status: .complete) else { return UITableViewCell() }
-            selectedItems = completeItems
+            selectedItems = completedItems
         default:
-            guard let allItems = listData.items else { return UITableViewCell() }
             selectedItems = allItems
         }
+        
+        //on checkbox click
+        cell.onClick = { cell in
+            
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            
+            let item = selectedItems[indexPath.row]
+            print("Row \(item.title) " )
+            
+            //switch status
+            item.isCompleted = !item.isCompleted
+            tableView.reloadData()
+        }
+        
+        //cell.delegate = self
         
         //load item
         let item = selectedItems[(indexPath as NSIndexPath).row]
@@ -91,7 +131,8 @@ class ItemTableViewController: UITableViewController {
         
         //cell.checkBoxButton.addTarget(self, action: #selector( switchStatus(sender:) ), for: .touchUpInside)
         
-        if item.status == .complete {
+        
+        if item.isCompleted {
             cell.itemCheckboxImage.image = UIImage(named: "checked")
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
@@ -103,17 +144,6 @@ class ItemTableViewController: UITableViewController {
     }
     
     func switchStatus(sender:UIButton) {
-        
-        //let indexPath = sender.tag
-        //let cell = tableView.cellForRow(at: indexPath)
-        
-        print("Update Status for \(sender.tag)")
-//        var item = item
-//        if item.status == .complete {
-//            item.setStatus(to: .new)
-//        } else {
-//            item.setStatus(to: .complete)
-//        }
         
         self.tableView.reloadData()
     
@@ -204,3 +234,16 @@ class ItemTableViewController: UITableViewController {
     }
 
 }
+
+//extension ItemTableViewController: ItemTableViewCellDelegate {
+//    
+//    func switchStatus(forItem: Item, cell: ItemTableViewCell, sender: UIButton) {
+//        
+//        if let indexPath = tableView.indexPathForSelectedRow {
+//            let item = items[indexPath.row]
+//            item.isCompleted = !item.isCompleted
+//        }
+//        
+//    }
+//    
+//}

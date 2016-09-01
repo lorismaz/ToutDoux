@@ -27,8 +27,8 @@ class List {
         
         return allExistingItems
     }
-    
-    func getItemsFilteredBy(status filter: Status ) -> [Item]? {
+
+    func getItemsFilteredBy(status complete: Bool ) -> [Item]? {
         guard let allExistingItems = self.items else {
             return nil
         }
@@ -37,7 +37,7 @@ class List {
         
         for item in allExistingItems {
             
-            if item.status == filter {
+            if item.isCompleted == complete {
                 
                 if filteredItems != nil {
                     
