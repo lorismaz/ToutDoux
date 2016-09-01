@@ -21,7 +21,7 @@ You can create and edit to-do lists, and add to-do items to these lists. Swipe t
 
 ## Screenshots
 
-![screenshot 1](assets/screenshots/screen1.png?raw=true =100x) ![screenshot 2](assets/screenshots/screen2.png?raw=true =100x) ![screenshot 3](assets/screenshots/screen3.png?raw=true =100x)
+![screenshot 1](assets/screenshots/Screenshot-1.png?raw=true) ![screenshot 2](assets/screenshots/Screenshot-2.png?raw=true) ![screenshot 3](assets/screenshots/Screenshot-3.png?raw=true)
 
 ## TODO
 
