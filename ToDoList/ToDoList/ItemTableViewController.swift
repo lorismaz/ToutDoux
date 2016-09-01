@@ -133,10 +133,10 @@ class ItemTableViewController: UITableViewController {
         
         
         if item.isCompleted {
-            cell.itemCheckboxImage.image = UIImage(named: "checked")
+            cell.statusLabel.text = "🤘🏼"
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
-            cell.itemCheckboxImage.image = UIImage(named: "not-checked")
+            cell.statusLabel.text = ""
             cell.itemNameLabel.textColor = UIColor.black
         }
         

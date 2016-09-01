@@ -23,6 +23,7 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var itemCheckboxImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         onClick?(self)
