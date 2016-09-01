@@ -17,7 +17,7 @@ class Item {
     init(title providedTitle: String, description providedDescription: String?) {
         title = providedTitle
         description = providedDescription
-        status = .New
+        status = .new
     }
     
     func setStatus(to newStatus: Status) {
@@ -27,7 +27,7 @@ class Item {
     func isComplete() -> Bool {
         
         switch status {
-        case .Complete:
+        case .complete:
             return true
         default:
             return false

@@ -35,7 +35,6 @@ func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
 
 // Item Status
 enum Status {
-    case New
-    case Complete
-    case WorkingOnIt
+    case new
+    case complete
 }

@@ -13,13 +13,15 @@ class ListTableViewController: UITableViewController {
     var lists: [List] = [
         List(name: "Home", items: nil),
         List(name: "GA", items: [
-            Item(title: "Prepare food for the week", description: nil),
-            Item(title: "Finish the project", description: nil),
+            Item(title: "Prepare food for the week", description: "Item with a description"),
+            Item(title: "Finish the project", description: "Item with a description"),
             Item(title: "Find a job", description: nil),
             Item(title: "Go fishing 🎣", description: nil)
         ]),
         List(name: "Groceries", items: nil)
     ]
+    
+    //var list: List
     
     // MARK: Properties
     
@@ -116,18 +118,54 @@ class ListTableViewController: UITableViewController {
     func displayListData(data: List) {
         performSegue(withIdentifier: "ToListItems", sender: data)
     }
+    
+//    func displayAddList(data: [List]) {
+//        performSegue(withIdentifier: "ToAddList", sender: data)
+//    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        guard let listData = sender as? List else { return }
-        guard let itemTableViewController = segue.destination as? ItemTableViewController else { return
+        
+        
+        if segue.identifier == "ToListItems" {
+            print("showing list's items")
+            
+//            let backItem = UIBarButtonItem()
+//            backItem.title = ""
+//            navigationItem.backBarButtonItem = backItem
+            
+            guard let listData = sender as? List else { return }
+            guard let itemTableViewController = segue.destination as? ItemTableViewController else { return
+            }
+            
+            itemTableViewController.listData = listData
+            
         }
         
-        itemTableViewController.listData = listData
+        if segue.identifier == "ToAddList" {
+            
+            print("Adding a list")
+            
+        }
         
+        
+    }
+    
+    @IBAction func unwindToListTable(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? AddListTableViewController, let list = sourceViewController.list {
+            
+            // Add a new list.
+            let newIndexPath = NSIndexPath(row: lists.count, section: 0)
+            lists.append(list)
+            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+        }
+        
+
     }
  
 

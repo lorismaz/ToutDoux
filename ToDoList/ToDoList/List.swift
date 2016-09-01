@@ -57,18 +57,6 @@ class List {
         
     }
     
-    func add(item: Item) {
-        
-        self.items?.append(item)
-        
-    }
-    
-    func delete(item: Item) {
-        //find current item's index in array
-        // then remove
-        //self.items?.remove(at: <*index*>)
-    }
-    
 }
 
 
