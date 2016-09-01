@@ -26,14 +26,8 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        onClick?(self)
-//        checkboxButtonTapped()
-//        
-//        guard let selectedItem = item else { print("item not item"); return }
-//        
-//        print("item is complete: \(selectedItem.isCompleted)")
-//        delegate?.switchStatus(forItem: selectedItem, cell: self, sender: sender)
         
+        onClick?(self)
         
     }
     
@@ -47,19 +41,5 @@ class ItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    func checkboxButtonTapped() {
-//        if itemCheckboxImage.image == UIImage(named:"not-checked") {
-//            itemCheckboxImage.image = UIImage(named: "checked")
-//            itemNameLabel.textColor = UIColor.gray
-//            //print(" Task complete // item.setStatus(to: .complete)")
-//            
-//        } else {
-//            itemCheckboxImage.image = UIImage(named: "not-checked")
-//            itemNameLabel.textColor = UIColor.black
-//            //print("Task not complete // item.setStatus(to: .new)")
-//        }
-//        
-//    }
 
 }

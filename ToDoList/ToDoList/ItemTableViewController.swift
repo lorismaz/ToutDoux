@@ -29,8 +29,6 @@ class ItemTableViewController: UITableViewController {
         let listName = listData.name
         self.title = "\(listName) List"
         
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,19 +46,25 @@ class ItemTableViewController: UITableViewController {
     // Number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let allItems = listData.items else { return 0 }
+        //guard let allItems = listData.items else { return 0 }
+        let allItems = listData.items
         
 //        var selectedItems: [Item]
         var completedItems: [Item] = []
         var newItems: [Item] = []
         
-        for item in allItems {
-            if item.isCompleted {
-                completedItems.append(item)
-            } else {
-                newItems.append(item)
+        if !allItems.isEmpty {
+            for item in allItems {
+                guard let item = item else { return  0}
+                
+                if item.isCompleted {
+                    completedItems.append(item)
+                } else {
+                    newItems.append(item)
+                }
             }
         }
+
         
         switch(statusSegmentControl.selectedSegmentIndex)
         {
@@ -76,21 +80,31 @@ class ItemTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-        
-        
-        
-        guard let allItems = listData.items else { return UITableViewCell() }
+    
+        //guard let allItems = listData.items else { return UITableViewCell() }
 
+        let items = listData.items
+        
         var selectedItems: [Item]
+        var allItems: [Item] = []
         var completedItems: [Item] = []
         var newItems: [Item] = []
         
-        for item in allItems {
-            if item.isCompleted {
-                completedItems.append(item)
-            } else {
-                newItems.append(item)
+        if !items.isEmpty {
+            
+            for item in items {
+                guard let item = item else { return  UITableViewCell()}
+                
+                if item.isCompleted {
+                    completedItems.append(item)
+                } else {
+                    newItems.append(item)
+                }
+                
+                allItems.append(item)
+                
             }
+            
         }
         
         // check which segment is selected
@@ -127,13 +141,9 @@ class ItemTableViewController: UITableViewController {
         // Need to learn more about this command
         cell.checkBoxButton.tag = indexPath.row
         
-        //cell.buttonTapped(cell.checkBoxButton)
-        
-        //cell.checkBoxButton.addTarget(self, action: #selector( switchStatus(sender:) ), for: .touchUpInside)
-        
         
         if item.isCompleted {
-            cell.statusLabel.text = "🤘🏼"
+            cell.statusLabel.text = item.statusji
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
             cell.statusLabel.text = ""
@@ -152,9 +162,9 @@ class ItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         
-        guard let items = listData.items else { return }
-        let item = items[row]
-        print(item)
+        let items = listData.items
+        guard let item = items[row] else { return }
+        
         displayItemDetails(item: item)
     }
 
@@ -201,8 +211,8 @@ class ItemTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let row = indexPath.row
-            //will crash on deleting complete items
-            listData.items?.remove(at: row)
+            // TODO: will crash on deleting complete items, from the item view
+            listData.items.remove(at: row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -217,14 +227,14 @@ class ItemTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
                 // Update an existing meal.
-                listData.items?[selectedIndexPath.row] = item
+                listData.items[selectedIndexPath.row] = item
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 
             } else {
                 
                 // Add a new item.
-                let newIndexPath = NSIndexPath(row: listData.items!.count, section: 0)
-                listData.items!.append(item)
+                let newIndexPath = NSIndexPath(row: listData.items.count, section: 0)
+                listData.items.append(item)
                 tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 
             }
@@ -234,16 +244,3 @@ class ItemTableViewController: UITableViewController {
     }
 
 }
-
-//extension ItemTableViewController: ItemTableViewCellDelegate {
-//    
-//    func switchStatus(forItem: Item, cell: ItemTableViewCell, sender: UIButton) {
-//        
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            let item = items[indexPath.row]
-//            item.isCompleted = !item.isCompleted
-//        }
-//        
-//    }
-//    
-//}

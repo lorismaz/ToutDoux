@@ -67,7 +67,7 @@ class AddListTableViewController: UITableViewController {
         
             print("let's' save")
             let name = listNameTextField.text ?? ""
-            list = List(name: name, items: nil)
+            list = List(name: name, items: [nil])
 
         }
         
