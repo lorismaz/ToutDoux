@@ -83,6 +83,7 @@ class AddItemTableViewController: UITableViewController {
         
     }
     
+    // send back to previous view // using exit and unwindToView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if saveButton === sender as? UIBarButtonItem {

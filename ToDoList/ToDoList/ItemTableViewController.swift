@@ -209,7 +209,10 @@ class ItemTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
- 
+    
+    
+    // get the item from the edit view // function sender parameter is a segue, and is used in IB in the Exit button
+    // from the Apple Food Tracker tutorial
     @IBAction func unwindToItemTable(sender: UIStoryboardSegue) {
         
         if let sourceViewController = sender.source as? AddItemTableViewController, let item = sourceViewController.item {
@@ -223,10 +226,27 @@ class ItemTableViewController: UITableViewController {
             } else {
                 
                 // Add a new item.
-                let newIndexPath = NSIndexPath(row: listData.items.count, section: 0)
-                listData.items.append(item)
-                tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 
+                listData.items.append(item)
+                
+                //let count = listData.items.count
+                //let newIndexPath = NSIndexPath(row: count, section: 0)
+                //tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+
+                
+                //the problem is that the segmented control is setting the number of items, not listData.
+                //we count the listData size but it is not what is supposed to be counted.
+
+                
+                //using tableView reload instead of insertRows fixes the error but ther is no animation and it goes back to previous segmented control. So if you add an item from the done items, then it will add the item, but still list Done items.
+                // segment control needs to be set back to To-Do or All to list everything that needs to be done.
+                
+                // Set back to To Do segment if adding an item from the Done segment
+                if statusSegmentControl.selectedSegmentIndex == 2 {
+                    statusSegmentControl.selectedSegmentIndex = 0
+                }
+                
+                tableView.reloadData()
             }
         }
         
