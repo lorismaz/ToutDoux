@@ -35,14 +35,13 @@ class AddItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Handle the text field’s user input via delegate callbacks.
-        //itemNameTextField.delegate = self
-        
-        
         if let item = item {
+            self.title = "Edit Item"
             itemNameTextField.text = item.title
             itemDescriptionTextField.text = item.description
         }
+    
+        
 
     }
 
