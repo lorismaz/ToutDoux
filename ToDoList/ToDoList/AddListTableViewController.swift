@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Add UITextFieldDelegate to check when an input has been changed.
 class AddListTableViewController: UITableViewController {
     
     // MARK: Properties
@@ -23,20 +24,7 @@ class AddListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard (lists) != nil else { return }
-        
-        //listNameTextField.delegate = self
-        // Enable the Save button only if the text field has a valid Meal name.
-        checkValidListName()
-        
-        //self.listNameTextField.becomeFirstResponder()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,29 +32,44 @@ class AddListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-        // Disable the Save button while editing.
-        saveButton.isEnabled = false
-    }
-    
-    func checkValidListName() {
-        // Disable the Save button if the text field is empty.
-        let text = listNameTextField.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        checkValidListName()
-    }
-
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if saveButton === sender as? UIBarButtonItem {
+            
+            guard let name = listNameTextField.text else { return true }
+            
+            if (name.isEmpty) {
+                displayError()
+                return false
+            
+            } else {
+                return true
+                
+            }
+        
+        }
+        
+        return true
+    }
+    
+    func displayError(){
+    
+        let alertController = UIAlertController(title: "Empty List Name", message:
+        "Please give a name to your list to create it.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if saveButton === sender as? UIBarButtonItem {
-        
-            print("let's' save")
-            let name = listNameTextField.text ?? ""
+            
+            guard let name = listNameTextField.text else { return }
             list = List(name: name, items: [nil])
 
         }
