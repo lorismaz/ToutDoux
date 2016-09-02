@@ -11,14 +11,14 @@ import UIKit
 class ListTableViewController: UITableViewController {
     
     var lists: [List] = [
-        List(name: "Home", items: []),
-        List(name: "GA", items: [
+        List(name: "🏡 Home", items: []),
+        List(name: "🎓 GA", items: [
             Item(title: "Prepare food for the week", description: "Item with a description"),
             Item(title: "Finish the project", description: "Item with a description"),
             Item(title: "Find a job", description: nil),
             Item(title: "Go fishing 🎣", description: nil)
         ]),
-        List(name: "Groceries", items: [])
+        List(name: "🐶 Doggy doggy", items: [])
     ]
     
     //var list: List
