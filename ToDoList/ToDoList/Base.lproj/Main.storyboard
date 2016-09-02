@@ -8,7 +8,7 @@
         <!--Add an Item-->
         <scene sceneID="i0u-bz-LNV">
             <objects>
-                <tableViewController id="sHZ-JR-WXb" customClass="AddItemTableViewController" customModule="Tout_Doux" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sHZ-JR-WXb" customClass="ItemDetailTableViewController" customModule="Tout_Doux" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wmz-So-QGj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
         <!--Add a List-->
         <scene sceneID="sup-tF-dtG">
             <objects>
-                <tableViewController id="4iD-jA-RgN" customClass="AddListTableViewController" customModule="Tout_Doux" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4iD-jA-RgN" customClass="ListDetailTableViewController" customModule="Tout_Doux" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="DXZ-5S-pUk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -70,7 +70,7 @@ class ListDetailTableViewController: UITableViewController {
         if saveButton === sender as? UIBarButtonItem {
             
             guard let name = listNameTextField.text else { return }
-            list = List(name: name, items: [nil])
+            list = List(name: name, items: [])
 
         }
         

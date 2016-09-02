@@ -12,7 +12,9 @@ class ItemTableViewController: UITableViewController {
     
     var listData: List!
     var items: [Item]!
-    var selectedSegment: Int!
+    //var selectedSegment: Int!
+    
+    var segmentItems: [Item]!
     
     // MARK: Properties
     // segment switch outlet
@@ -20,6 +22,7 @@ class ItemTableViewController: UITableViewController {
     
     // segment switch action
     @IBAction func segmentedControlActionChanged(_ sender: AnyObject) {
+        getSegmentItems()
         self.tableView.reloadData()
     }
     
@@ -27,9 +30,46 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Setting up segment Items to show
+       
+        getSegmentItems()
+        
+        
         let listName = listData.name
         self.title = "\(listName) List"
         
+    }
+    
+    func getSegmentItems() {
+        let items = listData.items
+        
+        var allItems: [Item] = []
+        var completedItems: [Item] = []
+        var newItems: [Item] = []
+            
+        for item in items {
+            
+            if item.isCompleted {
+                completedItems.append(item)
+            } else {
+                newItems.append(item)
+            }
+            
+            allItems.append(item)
+            
+        }
+        
+        
+        switch(statusSegmentControl.selectedSegmentIndex)
+        {
+        case 0:
+            segmentItems = newItems
+        case 2:
+            segmentItems = completedItems
+        default:
+            segmentItems = allItems
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,96 +87,34 @@ class ItemTableViewController: UITableViewController {
     // Number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //guard let allItems = listData.items else { return 0 }
-        let allItems = listData.items
-        
-//        var selectedItems: [Item]
-        var completedItems: [Item] = []
-        var newItems: [Item] = []
-        
-        if !allItems.isEmpty {
-            for item in allItems {
-                guard let item = item else { return  0}
-                
-                if item.isCompleted {
-                    completedItems.append(item)
-                } else {
-                    newItems.append(item)
-                }
-            }
-        }
-
-        // var selectedItems = getSelectedItems()
-        // return selectedItems
-        
-        switch(statusSegmentControl.selectedSegmentIndex)
-        {
-        case 0:
-            return newItems.count
-        case 2:
-            return completedItems.count
-        default:
-            return allItems.count
-        }
+        guard let segment = segmentItems else { return 0 }
+        return segment.count
         
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-
-        let items = listData.items
         
-        var selectedItems: [Item]
-        var allItems: [Item] = []
-        var completedItems: [Item] = []
-        var newItems: [Item] = []
+        //load item
+        let item = segmentItems[(indexPath as NSIndexPath).row]
         
-        if !items.isEmpty {
-            
-            for item in items {
-                guard let item = item else { return  UITableViewCell()}
-                
-                if item.isCompleted {
-                    completedItems.append(item)
-                } else {
-                    newItems.append(item)
-                }
-                
-                allItems.append(item)
-                
-            }
-            
-        }
-        
-        // check which segment is selected
-        switch(statusSegmentControl.selectedSegmentIndex)
-        {
-        case 0:
-            selectedItems = newItems
-        case 2:
-            selectedItems = completedItems
-        default:
-            selectedItems = allItems
-        }
+        //set item name
+        cell.itemNameLabel.text = item.title
         
         //on checkbox click
         cell.onClick = { cell in
             
             guard let indexPath = tableView.indexPath(for: cell) else { return }
             
-            let item = selectedItems[indexPath.row]
+            let item = self.segmentItems[indexPath.row]
             print("Row \(item.title) " )
             
             //switch status
             item.isCompleted = !item.isCompleted
             tableView.reloadData()
         }
-        
-        //load item
-        let item = selectedItems[(indexPath as NSIndexPath).row]
-        
-        cell.itemNameLabel.text = item.title
-        
+    
+        //returning correct icons and colors for each item's status
         if item.isCompleted {
             // Introducing the statusji™
             cell.statusLabel.text = item.statusji
@@ -152,9 +130,9 @@ class ItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         
-        let items = listData.items
-        guard let item = items[row] else { return }
-        
+        //let items = listData.items
+        //guard let item = segmentItems[row] else { return }
+        let item = segmentItems[row]
         displayItemDetails(item: item)
     }
 
@@ -198,13 +176,19 @@ class ItemTableViewController: UITableViewController {
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             // Delete the row from the data source
             let row = indexPath.row
+            
             // TODO: will crash on deleting complete items, from the item view
             listData.items.remove(at: row)
+            getSegmentItems()
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+            //let count = segmentItems.count
+            //let newIndexPath = NSIndexPath(row: count, section: 0)
+            //tableView.deleteRows(at: [newIndexPath as IndexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -220,34 +204,34 @@ class ItemTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
                 // Update an existing item.
-                listData.items[selectedIndexPath.row] = item
+                //listData.items[selectedIndexPath.row] = item
+                segmentItems[selectedIndexPath.row] = item
+                
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 
             } else {
                 
                 // Add a new item.
                 
-                listData.items.append(item)
-                
-                //let count = listData.items.count
-                //let newIndexPath = NSIndexPath(row: count, section: 0)
-                //tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
-
-                
-                //the problem is that the segmented control is setting the number of items, not listData.
-                //we count the listData size but it is not what is supposed to be counted.
-
-                
-                //using tableView reload instead of insertRows fixes the error but ther is no animation and it goes back to previous segmented control. So if you add an item from the done items, then it will add the item, but still list Done items.
-                // segment control needs to be set back to To-Do or All to list everything that needs to be done.
-                
-                // Set back to To Do segment if adding an item from the Done segment
+                // Go back to All segment if adding an item from the Done segment
                 if statusSegmentControl.selectedSegmentIndex == 2 {
-                    statusSegmentControl.selectedSegmentIndex = 0
+                    statusSegmentControl.selectedSegmentIndex = 1
                 }
                 
+                let count = listData.items.count
+                let newIndexPath = NSIndexPath(row: count, section: 0)
+                print(newIndexPath.row)
+                
+                //add item to list
+                listData.items.append(item)
+                
+                getSegmentItems()
+                
+                //tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 tableView.reloadData()
+                
             }
+            
         }
         
         

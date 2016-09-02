@@ -10,10 +10,10 @@ import UIKit
 
 class List {
     var name: String
-    var items: [Item?]
+    var items: [Item]
     var color: UIColor = UIColor.clear
     
-    init(name providedName: String, items providedItem: [Item?]) {
+    init(name providedName: String, items providedItem: [Item]) {
         name = providedName
         items = providedItem
         color = randomColor()
