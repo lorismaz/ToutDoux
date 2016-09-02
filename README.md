@@ -14,14 +14,9 @@ You can create and edit to-do lists, and add to-do items to these lists. Swipe t
 
 ### Sketch
 ![proto 1](assets/prototypes/HiFi/proto1.png)
-![proto 3](assets/prototypes/HiFi/proto3.png)
-![proto 4](assets/prototypes/HiFi/proto4.png)
+![proto 3](assets/prototypes/HiFi/proto4.png)
+![proto 4](assets/prototypes/HiFi/proto3.png)
 
 ## Screenshots
 
 ![screenshot 1](assets/screenshots/Screenshot-1.png?raw=true) ![screenshot 2](assets/screenshots/Screenshot-2.png?raw=true) ![screenshot 3](assets/screenshots/Screenshot-3.png?raw=true)
-
-## TODO
-
-  * Warn the user before deleting a whole list if there is items in it
-  * Show a list status info on the list view (like "3/9" tasks to be done, or a percentage of tasks done)
