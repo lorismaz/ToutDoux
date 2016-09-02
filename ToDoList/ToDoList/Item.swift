@@ -12,6 +12,7 @@ class Item {
     var title: String
     var description: String?
     var isCompleted: Bool = false
+    //introducing the Statusji™
     var statusji: String = ""
     
     init(title providedTitle: String, description providedDescription: String?) {
