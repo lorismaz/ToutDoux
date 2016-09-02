@@ -157,7 +157,7 @@ class ListTableViewController: UITableViewController {
     
     @IBAction func unwindToListTable(sender: UIStoryboardSegue) {
         
-        if let sourceViewController = sender.source as? AddListTableViewController, let list = sourceViewController.list {
+        if let sourceViewController = sender.source as? ListDetailTableViewController, let list = sourceViewController.list {
             
             // Add a new list.
             let newIndexPath = NSIndexPath(row: lists.count, section: 0)

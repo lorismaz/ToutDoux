@@ -1,5 +1,5 @@
 //
-//  AddItemTableViewController.swift
+//  ItemDetailTableViewController.swift
 //  ToDoList
 //
 //  Created by Loris Mazloum on 8/28/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddItemTableViewController: UITableViewController {
+class ItemDetailTableViewController: UITableViewController {
     
     //MARK: Outlets
     @IBOutlet weak var itemNameTextField: UITextField!

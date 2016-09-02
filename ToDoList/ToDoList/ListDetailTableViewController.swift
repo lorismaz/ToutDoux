@@ -1,5 +1,5 @@
 //
-//  AddListTableViewController.swift
+//  ListDetailTableViewController.swift
 //  ToDoList
 //
 //  Created by Loris Mazloum on 8/28/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 // Add UITextFieldDelegate to check when an input has been changed.
-class AddListTableViewController: UITableViewController {
+class ListDetailTableViewController: UITableViewController {
     
     // MARK: Properties
     @IBOutlet weak var listNameTextField: UITextField!

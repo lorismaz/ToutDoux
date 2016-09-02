@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB24E4E21D7397E900131587 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E11D7397E900131587 /* ListTableViewController.swift */; };
-		AB24E4E41D73983100131587 /* AddListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E31D73983100131587 /* AddListTableViewController.swift */; };
-		AB24E4E61D73985100131587 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E51D73985100131587 /* AddItemTableViewController.swift */; };
+		AB24E4E41D73983100131587 /* ListDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E31D73983100131587 /* ListDetailTableViewController.swift */; };
+		AB24E4E61D73985100131587 /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E51D73985100131587 /* ItemDetailTableViewController.swift */; };
 		AB24E4E81D73986C00131587 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E71D73986C00131587 /* ItemTableViewController.swift */; };
 		AB24E4EA1D73A6AF00131587 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4E91D73A6AF00131587 /* List.swift */; };
 		AB24E4F01D73B1E500131587 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB24E4EF1D73B1E500131587 /* ListTableViewCell.swift */; };
@@ -34,8 +34,8 @@
 
 /* Begin PBXFileReference section */
 		AB24E4E11D7397E900131587 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
-		AB24E4E31D73983100131587 /* AddListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListTableViewController.swift; sourceTree = "<group>"; };
-		AB24E4E51D73985100131587 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
+		AB24E4E31D73983100131587 /* ListDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailTableViewController.swift; sourceTree = "<group>"; };
+		AB24E4E51D73985100131587 /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
 		AB24E4E71D73986C00131587 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		AB24E4E91D73A6AF00131587 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		AB24E4EF1D73B1E500131587 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,9 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				AB24E4E71D73986C00131587 /* ItemTableViewController.swift */,
-				AB24E4E31D73983100131587 /* AddListTableViewController.swift */,
+				AB24E4E51D73985100131587 /* ItemDetailTableViewController.swift */,
 				AB24E4E11D7397E900131587 /* ListTableViewController.swift */,
-				AB24E4E51D73985100131587 /* AddItemTableViewController.swift */,
+				AB24E4E31D73983100131587 /* ListDetailTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -248,12 +248,12 @@
 			files = (
 				AB24E4F01D73B1E500131587 /* ListTableViewCell.swift in Sources */,
 				AB24E4E81D73986C00131587 /* ItemTableViewController.swift in Sources */,
-				AB24E4E61D73985100131587 /* AddItemTableViewController.swift in Sources */,
+				AB24E4E61D73985100131587 /* ItemDetailTableViewController.swift in Sources */,
 				AB24E4E21D7397E900131587 /* ListTableViewController.swift in Sources */,
 				AB24E4F41D73B7C200131587 /* ItemTableViewCell.swift in Sources */,
 				AB7255A81D762D7900F11885 /* Item.swift in Sources */,
 				ABD0C6AD1D6C116100790A4A /* AppDelegate.swift in Sources */,
-				AB24E4E41D73983100131587 /* AddListTableViewController.swift in Sources */,
+				AB24E4E41D73983100131587 /* ListDetailTableViewController.swift in Sources */,
 				AB24E4EA1D73A6AF00131587 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

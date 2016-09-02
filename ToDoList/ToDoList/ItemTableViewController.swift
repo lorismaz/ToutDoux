@@ -172,7 +172,7 @@ class ItemTableViewController: UITableViewController {
             navigationItem.backBarButtonItem = backItem
             
             guard let item = sender as? Item else { return }
-            guard let itemDetailViewController = segue.destination as? AddItemTableViewController else { return
+            guard let itemDetailViewController = segue.destination as? ItemDetailTableViewController else { return
             }
             
             itemDetailViewController.item = item
@@ -215,7 +215,7 @@ class ItemTableViewController: UITableViewController {
     // from the Apple Food Tracker tutorial
     @IBAction func unwindToItemTable(sender: UIStoryboardSegue) {
         
-        if let sourceViewController = sender.source as? AddItemTableViewController, let item = sourceViewController.item {
+        if let sourceViewController = sender.source as? ItemDetailTableViewController, let item = sourceViewController.item {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
